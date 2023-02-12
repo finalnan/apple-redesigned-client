@@ -10,7 +10,7 @@ import { fetchProducts } from '@/utils/fetchProducts';
 import ProductItem from '@/components/ProductItem';
 import Cart from '@/components/Cart';
 import { getServerSession } from 'next-auth/next';
-import type { AuthOptions, NextAuthOptions, Session } from 'next-auth';
+import type { NextAuthOptions, Session } from 'next-auth';
 import { authOptions } from './api/auth/[...nextauth]';
 
 interface Props {
