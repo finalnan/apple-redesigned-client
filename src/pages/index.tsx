@@ -10,7 +10,7 @@ import { fetchProducts } from '@/utils/fetchProducts';
 import ProductItem from '@/components/ProductItem';
 import Cart from '@/components/Cart';
 import { getServerSession } from 'next-auth/next';
-import type { Session } from 'next-auth';
+import type { AuthOptions, Session } from 'next-auth';
 import { authOptions } from './api/auth/[...nextauth]';
 
 interface Props {
@@ -85,7 +85,11 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 ) => {
   const categories = await fetchCategories();
   const products = await fetchProducts();
-  const session = await getServerSession(context.req, context.res, authOptions);
+  const session = await getServerSession(
+    context.req,
+    context.res,
+    authOptions as AuthOptions
+  );
 
   return {
     props: {
